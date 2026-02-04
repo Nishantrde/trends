@@ -51,10 +51,12 @@ export default function Home(){
         }
       ]
     };
+    const width = window.innerWidth;
+    const height = window.innerHeight;
 
     const projection = geoEquirectangular()
-      .scale(200)
-      .translate([200, 150]);
+      .scale(1500)
+      .translate([width/2, height/2]);
 
     const geoGenerator = geoPath()
       .projection(projection);
@@ -64,7 +66,7 @@ export default function Home(){
 
   return(
     <div id="content">
-      <svg width="800px" height="400px">
+      <svg width="100%" height="100%">
         <g className="map"></g>
       </svg>
     </div>
