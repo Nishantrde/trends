@@ -19,7 +19,7 @@ function update(geojson: any, geoGenerator: any) {
 
 export default function Home(){
   useEffect(() => {
-    const width = window.innerWidth;
+    const width = window.innerWidth; 
     const height = window.innerHeight;
     const svg = select("#content")
     const g = select("#content g.map");
@@ -31,7 +31,9 @@ export default function Home(){
     const geoGenerator = geoPath()
       .projection(projection);
     
-    svg.call(zoom().on("zoom",  (event)=> {
+    svg.call(zoom()
+    .scaleExtent([1 ,8])
+    .on("zoom",  (event)=> {
       g.attr("transform", event.transform)
     }))
 
