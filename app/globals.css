@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4f4f4;
+  --background: #f8f2f2;
   --foreground: #fbf8f8;
 }
 
@@ -26,7 +26,7 @@ body {
 }
 
 #content .map path{
-  fill: #201f1f;
-  stroke: #fbfafa;
+  fill: #0d0d0d;
+  stroke: #d9d1d1;
 }
 
