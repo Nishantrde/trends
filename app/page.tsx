@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import { select } from 'd3-selection';
 import { geoPath, geoEquirectangular } from 'd3-geo';
 import { json } from 'd3-fetch';
+import { zoom } from 'd3-zoom';
+
 
 function update(geojson: any, geoGenerator: any) {
   let u = select('#content g.map')
@@ -19,6 +21,8 @@ export default function Home(){
   useEffect(() => {
     const width = window.innerWidth;
     const height = window.innerHeight;
+    const svg = select("#content")
+    const g = select("#content g.map");
 
     const projection = geoEquirectangular()
       .scale(300)
@@ -26,6 +30,11 @@ export default function Home(){
 
     const geoGenerator = geoPath()
       .projection(projection);
+    
+    svg.call(zoom().on("zoom",  (event)=> {
+      g.attr("transform", event.transform)
+    }))
+
 
     json('https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson')
       .then((geojson: any) => {
@@ -41,3 +50,4 @@ export default function Home(){
     </div>
   )
 }
+
