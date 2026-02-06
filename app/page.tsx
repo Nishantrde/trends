@@ -23,7 +23,7 @@ export default function Home(){
     const height = window.innerHeight;
     const svg = select("#content")
     const g = select("#content g.map");
-
+    const extent: [[number, number], [number, number]] = [[0, 0], [width, height]];
     const projection = geoEquirectangular()
       .scale(300)
       .translate([width/2, height/2]);
@@ -32,7 +32,9 @@ export default function Home(){
       .projection(projection);
     
     svg.call(zoom()
-    .scaleExtent([1 ,8])
+    .scaleExtent([1 ,2])
+    .extent(extent)
+    .translateExtent(extent)
     .on("zoom",  (event)=> {
       g.attr("transform", event.transform)
     }))
