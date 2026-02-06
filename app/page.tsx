@@ -32,7 +32,7 @@ export default function Home(){
       .projection(projection);
     
     svg.call(zoom()
-    .scaleExtent([1 ,2])
+    .scaleExtent([1 ,8])
     .extent(extent)
     .translateExtent(extent)
     .on("zoom",  (event)=> {
